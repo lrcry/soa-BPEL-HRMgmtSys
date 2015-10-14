@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:autocheck="http://soap.ors.com.au/autocheck" xmlns:crv.soap.ors.com.au="http://crv.soap.ors.com.au/" xmlns:pdv.soap.ors.com.au="http://pdv.soap.ors.com.au/">
+  <process name="autocheck:AutoCheck">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="autocheck:AutoCheckService" port="AutoCheckPort"/>
+    </provide>
+    <invoke partnerLink="crv">
+      <service name="crv.soap.ors.com.au:CRVPortTypeImplService" port="CRVPortTypeImplPort"/>
+    </invoke>
+    <invoke partnerLink="pdv">
+      <service name="pdv.soap.ors.com.au:PDVPortTypeImplService" port="PDVPortTypeImplPort"/>
+    </invoke>
+  </process>
+</deploy>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://crv.soap.ors.com.au/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http"
+	xmlns:ns1="http://soap.ors.com.au/crv" name="CRVPortTypeImplService"
+	targetNamespace="http://crv.soap.ors.com.au/">
+	<wsdl:import
+		location="crv.wsdl"
+		namespace="http://soap.ors.com.au/crv"></wsdl:import>
+	<wsdl:binding name="CRVPortTypeImplServiceSoapBinding"
+		type="ns1:CRVPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="CRVCheck">
+			<soap:operation soapAction="urn:CRVCheckRequestMsg"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="CRVFault_Exception">
+				<soap:fault name="CRVFault_Exception" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CRVPortTypeImplService">
+		<wsdl:port binding="tns:CRVPortTypeImplServiceSoapBinding"
+			name="CRVPortTypeImplPort">
+			<soap:address
+				location="http://localhost:8080/soa-REST-BPEL-HRMgmtSys-SOAP/CRVService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
